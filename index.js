@@ -1,6 +1,9 @@
+const generateMarkdown = require('./utils/generateMarkdown');
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+
+
 
 // // TODO: Create an array of questions for user input
 // const questions = [];
@@ -25,6 +28,7 @@ const generateReadMe = (outPut) =>
         <li class="list-group-item">Usage : ${outPut.usage}</li>
         <li class="list-group-item">Contributing: ${outPut.contribution}</li>
         <li class="list-group-item">Tests: ${outPut.test}</li>
+        <li class="list-group-item" id="badge">Badge: ${generateMarkdown.badge}</li>
     </ul>
   </div>
 </div>
@@ -63,19 +67,26 @@ inquirer
       name: 'test',
       message: 'Please include any test instructions.',
     },
+    {
+      type: 'list',
+      name: 'license',
+      message: 'What license do you have for this app',
+      choices: [["MIT", "GPLv3", "GPL"]],
+    },
   ])
-  .then((outPut) => {
-    const readmePageContent = generateReadMe(outPut);
+  .then((res) => {
+    const readmePageContent = generateReadMe(res);
 
    
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
 fs.writeFile('README.md', readmePageContent, (err) =>
 err ? console.log(err) : console.log('Successfully README.md!')
 );
 });
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+  
+}
 
 // Function call to initialize app
 init();
