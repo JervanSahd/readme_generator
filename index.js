@@ -1,25 +1,22 @@
-const generateMarkdown = require('./utils/generateMarkdown');
+
 // TODO: Include packages needed for this application
+const generateMarkdown = require('./utils/generateMarkdown');
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-
-
-// // TODO: Create an array of questions for user input
-// const questions = [];
-
+const init = () => {
 const generateReadMe = (outPut) =>
-  `
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <title>${outPut.title}</title>
-</head>
-<body>
+  `<!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>${outPut.title}</title>
+  </head>
+  <body>
   <div class="jumbotron jumbotron-fluid">
+  <header>generateMarkdown.</header>
   <div class="container">
   <h1 class="display-4">${outPut.title}</h1>
     <h2 class="display-4">${outPut.description}</h2>
@@ -28,14 +25,17 @@ const generateReadMe = (outPut) =>
         <li class="list-group-item">Usage : ${outPut.usage}</li>
         <li class="list-group-item">Contributing: ${outPut.contribution}</li>
         <li class="list-group-item">Tests: ${outPut.test}</li>
-        <li class="list-group-item" id="badge">Badge: ${generateMarkdown.badge}</li>
-    </ul>
+      <li class="list-group-item" id="badge">Badge: ${outPut.license}</li> 
+        </ul>
   </div>
-</div>
-</body>
-</html>`;
+</div>`
 
-inquirer
+
+// // TODO: Create an array of questions for user input
+// const questions = [];
+
+  
+  inquirer
   .prompt([
     {
       type: 'input',
@@ -71,22 +71,20 @@ inquirer
       type: 'list',
       name: 'license',
       message: 'What license do you have for this app',
-      choices: [["MIT", "GPLv3", "GPL"]],
+      choices: ["MIT", "Apache", "GPLv3"],
     },
   ])
-  .then((res) => {
-    const readmePageContent = generateReadMe(res);
+// TODO: Create a function to initialize app
 
-   
 // TODO: Create a function to write README file
-fs.writeFile('README.md', readmePageContent, (err) =>
-err ? console.log(err) : console.log('Successfully README.md!')
+.then((outPut) => {
+const readmePageContent = generateReadMe(outPut);
+fs.writeFile('./utils/README.md', readmePageContent, (err) =>
+err ? console.log(err) : console.log('Successfully created README.md!')
 );
 });
-// TODO: Create a function to initialize app
-function init() {
-  
 }
+
 
 // Function call to initialize app
 init();
