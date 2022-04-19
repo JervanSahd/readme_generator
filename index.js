@@ -4,34 +4,46 @@ const generateMarkdown = require('./utils/generateMarkdown');
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-const init = () => {
-const generateReadMe = (outPut) =>
- 
+const generateReadMe = (outPut) =>{
+  `${generateMarkdown.generateMarkdown}
   
-  ` 
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <title>${outPut.title}</title>
-  </head>
-  <body>
-  <div class="jumbotron jumbotron-fluid">
-  <header>generateMarkdown${generateMarkdown.generateMarkdown}.</header>
-  <div class="container">
-  <h1 class="display-4">${outPut.title}</h1>
-    <h2 class="display-4">${outPut.description}</h2>
-    <ul class="list-group">
-        <li class="list-group-item">Installation: ${outPut.usage}</li>
-        <li class="list-group-item">Usage : ${outPut.usage}</li>
-        <li class="list-group-item">Contributing: ${outPut.contribution}</li>
-        <li class="list-group-item">Tests: ${outPut.test}</li>
-      <li class="list-group-item" id="badge">Badge: ${outPut.license}</li> 
-        </ul>
-  </div>
-</div>`
+  # ${outPut.title}
+  ***
+  ##TABLE OF CONTENTS
+  1. [ Description. ](#desc)
+  2. [ Installation Instruction. ](#install)
+  3. [ Usage Information. ](#use)
+  4. [ Contribution Guidelines. ](#cont)
+  5. [ Testing Instructions. ](#test)
+  6. [ Questions. ](#ques)
+  
+  
+  <a id="desc"></a>
+  ## DESCRIPTION:
+  ${outPut.description}
+  
+  <a id="install"></a>
+  ##  Installation: 
+  ${outPut.installation}
+  
+  <a id="use"></a>
+  ##  Usage:
+  ${outPut.usage}
+  
+  <a id="cont"></a>
+  ##  Contributing:
+  ${outPut.contribution}
+  
+  <a id="test"></a>
+  ##  Tests: 
+  ${outPut.test}
+  
+  <a id="ques"></a>
+  ##  Questions
+      *   [GitHub][GitHubLink]:${outPut.github}
+      *   Reach me with additional questions at ${outPut.email}
+  `
+  };
 
 
 // // TODO: Create an array of questions for user input
@@ -86,8 +98,8 @@ fs.writeFile('./utils/README.md', readmePageContent, (err) =>
 err ? console.log(err) : console.log('Successfully created README.md!')
 );
 });
-}
+
 
 
 // Function call to initialize app
-init();
+// init();
