@@ -6,7 +6,10 @@ const fs = require('fs');
 
 const init = () => {
 const generateReadMe = (outPut) =>
-  `<!DOCTYPE html>
+ 
+  
+  ` 
+  <!DOCTYPE html>
   <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -16,7 +19,7 @@ const generateReadMe = (outPut) =>
   </head>
   <body>
   <div class="jumbotron jumbotron-fluid">
-  <header>generateMarkdown.</header>
+  <header>generateMarkdown${generateMarkdown.generateMarkdown}.</header>
   <div class="container">
   <h1 class="display-4">${outPut.title}</h1>
     <h2 class="display-4">${outPut.description}</h2>

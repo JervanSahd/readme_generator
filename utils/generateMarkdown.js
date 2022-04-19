@@ -55,12 +55,9 @@ function renderLicenseSection(section) {
 function generateMarkdown(data) {
 
  
-  return `# ${data.license}
-
-`
-renderLicenseBadge();
-renderLicenseSection();
-renderLicenseLink();``
+  return `# ${renderLicenseBadge(data)},${renderLicenseLink(data)},${renderLicenseSection(data)}`
 };
 
-module.exports = generateMarkdown;
+module.exports = generateMarkdown;{
+  generateMarkdown();
+};
