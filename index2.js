@@ -99,7 +99,7 @@ ${outPut.test}
 };
 function init() {
     promptUser()
-        .then((outPut) => writeFileAsync('./utils/README.md',  JSON.stringify(generateReadMe(outPut))))
+        .then((outPut) => writeFileAsync('./utils/README.md',  generateReadMe(outPut)))
         .then(() => console.log('Successfully created a README file'))
         .catch((err) => console.error(err));
 }
