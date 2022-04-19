@@ -14,11 +14,12 @@ const generateHTML = (outPut) =>
 5. [ Testing Instructions. ](#test)
 6. [ Questions. ](#ques)
 
-
+```md
 <a id="desc"></a>
 ## DESCRIPTION:
 ${outPut.description}
-
+```
+```md
 <a id="install"></a>
 ##  Installation: 
 ${outPut.installation}
@@ -34,6 +35,7 @@ ${outPut.contribution}
 <a id="test"></a>
 ##  Tests: 
 ${outPut.test}
+```
 
 <a id="ques"></a>
 ##  Questions
